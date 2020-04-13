@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2020 at 02:40 PM
+-- Generation Time: Apr 13, 2020 at 05:12 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.1.21
 
@@ -96,15 +96,16 @@ CREATE TABLE `proposal` (
   `aprf` varchar(100) NOT NULL,
   `aprp` varchar(100) NOT NULL,
   `komenf` varchar(100) DEFAULT NULL,
-  `komenp` varchar(100) DEFAULT NULL
+  `komenp` varchar(100) DEFAULT NULL,
+  `Lpj` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `proposal`
 --
 
-INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`, `dikampus`, `tempat`, `anggaran`, `file`, `user`, `aprf`, `aprp`, `komenf`, `komenp`) VALUES
-(1, 'Dies', '321425', '124124', 1, 'UNIQ', '5000000', 'asu', 'SOPOAKU', 'Approved', 'pending', '', '');
+INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`, `dikampus`, `tempat`, `anggaran`, `file`, `user`, `aprf`, `aprp`, `komenf`, `komenp`, `Lpj`) VALUES
+(1, 'Dies', '321425', '124124', 1, 'UNIQ', '5000000', 'asu', 'SOPOAKU', 'Approved', 'pending', '', '', NULL);
 
 -- --------------------------------------------------------
 

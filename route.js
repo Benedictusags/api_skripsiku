@@ -50,9 +50,11 @@ module.exports = function (app) {
             const aprp = req.body.aprp;
             const komenf = req.body.komenf;
             const komenp = req.body.komenp;
+			const Lpj = req.body.Lpj;
+			
 
 
-            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}');`,
+            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}');`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -72,9 +74,10 @@ module.exports = function (app) {
             const aprp = req.body.aprp;
             const komenf = req.body.komenf;
             const komenp = req.body.komenp;
+			const Lpj = req.body.Lpj;
 
 
-            connection.query(`UPDATE proposal set  aprf = '${aprf}', aprp = '${aprp}', komenf = '${komenf}', komenp = '${komenp}' WHERE proposal.ID = ${id};`,
+            connection.query(`UPDATE proposal set  aprf = '${aprf}', aprp = '${aprp}', komenf = '${komenf}', komenp = '${komenp}' , Lpj = '${Lpj}' WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
