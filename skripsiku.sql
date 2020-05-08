@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2020 at 05:12 PM
+-- Generation Time: May 08, 2020 at 03:54 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.1.21
 
@@ -60,6 +60,19 @@ CREATE TABLE `peminjaman_barang` (
   `komen` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `peminjaman_barang`
+--
+
+INSERT INTO `peminjaman_barang` (`id`, `user`, `acara`, `tanggal_mulai`, `tanggal_selesai`, `nama_barang`, `QTY`, `status`, `komen`) VALUES
+(1, 'hmpssi', 'bambu gila on the road', '1234', '4321', 'undefined', 20, 'pending', ''),
+(2, 'BEM', 'bambu gila on the road', '1234', '4321', 'undefined', 20, 'Rejected', 'Mau dipake univ'),
+(3, 'hmpssi', 'bambu gila on the road', '1234', '4321', 'undefined', 20, 'pending', ''),
+(4, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 20, 'pending', ''),
+(5, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 20, 'pending', ''),
+(6, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 20, 'pending', ''),
+(7, 'Senat', 'Perang Sarung', '1234', '4321', 'kursi', 20, 'pending', '');
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +89,14 @@ CREATE TABLE `peminjaman_tempat` (
   `status` varchar(100) NOT NULL,
   `komen` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `peminjaman_tempat`
+--
+
+INSERT INTO `peminjaman_tempat` (`id`, `user`, `acara`, `tanggal_mulai`, `tanggal_selesai`, `nama_tempat`, `status`, `komen`) VALUES
+(1, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 'pending', ''),
+(2, 'Senat', 'Perang Sarung', '1234', '4321', 'lapangan', 'Rejected', 'Mau dipake univ');
 
 -- --------------------------------------------------------
 
@@ -105,7 +126,9 @@ CREATE TABLE `proposal` (
 --
 
 INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`, `dikampus`, `tempat`, `anggaran`, `file`, `user`, `aprf`, `aprp`, `komenf`, `komenp`, `Lpj`) VALUES
-(1, 'Dies', '321425', '124124', 1, 'UNIQ', '5000000', 'asu', 'SOPOAKU', 'Approved', 'pending', '', '', NULL);
+(1, 'Dies', '321425', '124124', 1, 'UNIQ', '5000000', 'asu', 'SOPOAKU', 'Approved', 'pending', '5000000', '', 'MANTAP.CO'),
+(2, 'Test2', '321425', '124124', 1, 'Luar', '450000', 'oke', 'SOPOAKU', 'Approved', 'undefined', '5000000', 'undefined', 'undefined'),
+(3, 'acaraan', '1234', '4321', 1, 'Unika', '300000', 'aaaaa', 'hmpssi', 'Rejected', 'Approved', 'Proposalmu Rakmutu!', '5000000', 'undefined');
 
 -- --------------------------------------------------------
 
@@ -119,6 +142,13 @@ CREATE TABLE `tempat` (
   `deskripsi` varchar(100) NOT NULL,
   `status` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tempat`
+--
+
+INSERT INTO `tempat` (`id`, `nama_tempat`, `deskripsi`, `status`) VALUES
+(1, 'lapang', 'undefined', 'tersedia');
 
 -- --------------------------------------------------------
 
@@ -192,16 +222,28 @@ ALTER TABLE `barang`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `peminjaman_barang`
+--
+ALTER TABLE `peminjaman_barang`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `peminjaman_tempat`
+--
+ALTER TABLE `peminjaman_tempat`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `proposal`
 --
 ALTER TABLE `proposal`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tempat`
 --
 ALTER TABLE `tempat`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -33,9 +33,21 @@ module.exports = function (app) {
                     }
                 });
         });
+		
+		app.route('/getProposal')
+        .get(function (req, res) {
+            connection.query('SELECT * FROM proposal', function (error, rows, fields) {
+                if (error) {
+                    console.log(error)
+                } else {
+                    response.ok(rows, res)
+                }
+            });
+        });
 
 
-    app.route('/addProposal')
+
+		app.route('/addProposal')
         .post(function (req, res) {
 
             const judul_acara = req.body.judul_acara;
@@ -65,19 +77,16 @@ module.exports = function (app) {
         });
 
 
-    app.route('/updateProposal')
+    app.route('/updateLPJ')
         .post(function (req, res) {
 
            
             const id = req.body.id;
-            const aprf = req.body.aprf;
-            const aprp = req.body.aprp;
-            const komenf = req.body.komenf;
-            const komenp = req.body.komenp;
+    
 			const Lpj = req.body.Lpj;
 
 
-            connection.query(`UPDATE proposal set  aprf = '${aprf}', aprp = '${aprp}', komenf = '${komenf}', komenp = '${komenp}' , Lpj = '${Lpj}' WHERE proposal.ID = ${id};`,
+            connection.query(`UPDATE proposal set Lpj = '${Lpj}' WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -86,18 +95,66 @@ module.exports = function (app) {
                     }
                 });
         });
+		
+		 app.route('/feedbackProgdi')
+        .post(function (req, res) {
 
-    app.route('/getProposal')
-        .get(function (req, res) {
-            connection.query('SELECT * FROM proposal', function (error, rows, fields) {
-                if (error) {
-                    console.log(error)
-                } else {
-                    response.ok(rows, res)
-                }
-            });
+           
+            const id = req.body.id;
+            const aprf = req.body.aprf;
+			const komenf = req.body.komenf;
+
+
+            connection.query(`UPDATE proposal set  aprf = '${aprf}', komenf = '${komenf}' WHERE proposal.ID = ${id};`,
+                function (error, rows, fields) {
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        response.ok(rows, res)
+                    }
+                });
         });
+		
+		app.route('/feedbackFakultas')
+        .post(function (req, res) {
 
+           
+            const id = req.body.id;
+            const aprf = req.body.aprf;
+			const komenf = req.body.komenf;
+
+
+            connection.query(`UPDATE proposal set  aprf = '${aprf}', komenf = '${komenf}' WHERE proposal.ID = ${id};`,
+                function (error, rows, fields) {
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        response.ok(rows, res)
+                    }
+                });
+        });
+		
+		app.route('/feedbackPusat')
+        .post(function (req, res) {
+
+           
+            const id = req.body.id;
+            const aprp = req.body.aprp;
+			const komenp = req.body.komenp;
+
+
+            connection.query(`UPDATE proposal set  aprp = '${aprp}', komenp = '${komenp}' WHERE proposal.ID = ${id};`,
+                function (error, rows, fields) {
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        response.ok(rows, res)
+                    }
+                });
+        });
+		
+
+    
         app.route('/getBarang')
         .get(function (req, res) {
             connection.query('SELECT * FROM barang', function (error, rows, fields) {
@@ -131,12 +188,12 @@ module.exports = function (app) {
         .post(function (req, res) {
             
             const ID = req.body.ID;
-            const nama_barang = req.body.Nama_Barang;
+            const nama_barang = req.body.nama_barang;
             const QTY = req.body.QTY;
             const status = req.body.status;
 
 
-            connection.query(`UPDATE barang set  Nama_Barang = '${nama_barang}', QTY = ${QTY}, status = '${status}' WHERE barang.ID = ${ID};`,
+            connection.query(`UPDATE barang set  nama_barang = '${nama_barang}', QTY = ${QTY}, status = '${status}' WHERE barang.ID = ${ID};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -214,7 +271,7 @@ module.exports = function (app) {
             const acara = req.body.acara;
             const tanggal_mulai = req.body.tanggal_mulai;
             const tanggal_selesai = req.body.tanggal_selesai;
-            const nama_tempat = req.body.tempat;
+            const nama_tempat = req.body.nama_tempat;
             const status = req.body.status;
             const komen = req.body.komen;
 
@@ -228,14 +285,14 @@ module.exports = function (app) {
             });
         });
 
-        app.route('/updatePeminjamanTempat')
+        app.route('/feedbackPeminjamanTempat')
         .post(function (req, res) {
 
             const id = req.body.id;    
             const status = req.body.status;
             const komen = req.body.komen;
 
-            connection.query(`UPDATE peminjaman_tempat set status = ${status}', komen = '${komen}' WHERE peminjaman_tempat.id= ${id};`, function (error, rows, fields) {
+            connection.query(`UPDATE peminjaman_tempat set status = '${status}', komen = '${komen}' WHERE peminjaman_tempat.id= ${id};`, function (error, rows, fields) {
                 if (error) {
                     console.log(error)
                 } else {
@@ -262,7 +319,7 @@ module.exports = function (app) {
             const acara = req.body.acara;
             const tanggal_mulai = req.body.tanggal_mulai;
             const tanggal_selesai = req.body.tanggal_selesai;
-            const nama_barang = req.body.barang;
+            const nama_barang = req.body.nama_barang;
             const QTY = req.body.QTY;
             const status = req.body.status;
             const komen = req.body.komen;
@@ -277,14 +334,14 @@ module.exports = function (app) {
             });
         });
 
-        app.route('/updatePeminjamanBarang')
+        app.route('/feedbackPeminjamanBarang')
         .post(function (req, res) {
 
             const id = req.body.id;    
             const status = req.body.status;
             const komen = req.body.komen;
 
-            connection.query(`UPDATE peminjaman_barang set status = ${status}', komen = '${komen}' WHERE peminjaman_barang.id= ${id};`, function (error, rows, fields) {
+            connection.query(`UPDATE peminjaman_barang set status = '${status}', komen = '${komen}' WHERE peminjaman_barang.id= ${id};`, function (error, rows, fields) {
                 if (error) {
                     console.log(error)
                 } else {
