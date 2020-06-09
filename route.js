@@ -16,6 +16,22 @@ module.exports = function (app) {
                 }
             });
         });
+		
+    app.route('/login')
+        .post(function (req, res) {
+			
+			const user = req.body.user;
+			const pass = req.body.pass;
+			
+            connection.query(`SELECT user, COUNT(*) AS number FROM user WHERE user.user = '${user}' AND user.pass = '${pass}' GROUP BY user.user`
+			, function (error, rows, fields) {
+                if (error) {
+                    console.log(error)
+                } else {
+                    response.ok(rows, res)
+                }
+            });	
+        });
 
     app.route('/addUser')
         .post(function (req, res) {
@@ -36,7 +52,7 @@ module.exports = function (app) {
 		
 		app.route('/getProposal')
         .get(function (req, res) {
-            connection.query('SELECT * FROM proposal', function (error, rows, fields) {
+            connection.query('SELECT * FROM proposal ORDER BY id ASC', function (error, rows, fields) {
                 if (error) {
                     console.log(error)
                 } else {
@@ -44,8 +60,7 @@ module.exports = function (app) {
                 }
             });
         });
-
-
+		
 
 		app.route('/addProposal')
         .post(function (req, res) {
@@ -63,10 +78,13 @@ module.exports = function (app) {
             const komenf = req.body.komenf;
             const komenp = req.body.komenp;
 			const Lpj = req.body.Lpj;
+			const submit_date = req.body.submit_date;
+			const aprf_date = req.body.aprf_date;
+			const lpj_date = req.body.lpj_date;
 			
 
 
-            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}');`,
+            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}', '${submit_date}', '${aprf_date}', '${lpj_date}');`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -75,6 +93,7 @@ module.exports = function (app) {
                     }
                 });
         });
+		
 
 
     app.route('/updateLPJ')
@@ -82,11 +101,26 @@ module.exports = function (app) {
 
            
             const id = req.body.id;
-    
 			const Lpj = req.body.Lpj;
 
 
             connection.query(`UPDATE proposal set Lpj = '${Lpj}' WHERE proposal.ID = ${id};`,
+                function (error, rows, fields) {
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        response.ok(rows, res)
+                    }
+                });
+        });
+		
+		app.route('/deleteProposal')
+        .delete(function (req, res) {
+
+           
+            const id = req.body.id;
+			
+            connection.query(`DELETE FROM propsal WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -169,12 +203,12 @@ module.exports = function (app) {
         app.route('/addBarang')
         .post(function (req, res) {
 
-            const Nama_Barang = req.body.Nama_Barang;
+            const nama_barang = req.body.nama_barang;
             const QTY = req.body.QTY;
             const status = req.body.status;
 
 
-            connection.query(`INSERT INTO barang VALUES (NULL, '${Nama_Barang}', ${QTY}, '${status}');`,function (error, rows, fields) {
+            connection.query(`INSERT INTO barang VALUES (NULL, '${nama_barang}', ${QTY}, '${status}');`,function (error, rows, fields) {
                     if (error) {
                         console.log(error)
                     } else {
