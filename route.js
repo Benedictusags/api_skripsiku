@@ -79,12 +79,13 @@ module.exports = function (app) {
             const komenp = req.body.komenp;
 			const Lpj = req.body.Lpj;
 			const submit_date = req.body.submit_date;
-			const aprf_date = req.body.aprf_date;
+            const aprf_date = req.body.aprf_date;
+            const aprp_date = req.body.aprp_date;
 			const lpj_date = req.body.lpj_date;
 			
 
 
-            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}', '${submit_date}', '${aprf_date}', '${lpj_date}');`,
+            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}', '${submit_date}', '${aprf_date}', '${aprp_date}', '${lpj_date}');`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -101,10 +102,11 @@ module.exports = function (app) {
 
            
             const id = req.body.id;
-			const Lpj = req.body.Lpj;
+            const Lpj = req.body.Lpj;
+            const lpj_date = req.body.lpj_date;
 
 
-            connection.query(`UPDATE proposal set Lpj = '${Lpj}' WHERE proposal.ID = ${id};`,
+            connection.query(`UPDATE proposal set Lpj = '${Lpj}', lpj_date = '${lpj_date}' WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -136,10 +138,11 @@ module.exports = function (app) {
            
             const id = req.body.id;
             const aprf = req.body.aprf;
-			const komenf = req.body.komenf;
+            const komenf = req.body.komenf;
+            const aprf_date = req.body.aprf_date;
 
 
-            connection.query(`UPDATE proposal set  aprf = '${aprf}', komenf = '${komenf}' WHERE proposal.ID = ${id};`,
+            connection.query(`UPDATE proposal set  aprf = '${aprf}', komenf = '${komenf}', aprf_date = '${aprf_date}' WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -156,9 +159,9 @@ module.exports = function (app) {
             const id = req.body.id;
             const aprf = req.body.aprf;
 			const komenf = req.body.komenf;
+            const aprf_date = req.body.aprf_date;
 
-
-            connection.query(`UPDATE proposal set  aprf = '${aprf}', komenf = '${komenf}' WHERE proposal.ID = ${id};`,
+            connection.query(`UPDATE proposal set  aprf = '${aprf}', komenf = '${komenf}', aprf_date = '${aprf_date}' WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -174,10 +177,11 @@ module.exports = function (app) {
            
             const id = req.body.id;
             const aprp = req.body.aprp;
-			const komenp = req.body.komenp;
+            const komenp = req.body.komenp;
+            const aprp_date = req.body.aprp_date;
 
 
-            connection.query(`UPDATE proposal set  aprp = '${aprp}', komenp = '${komenp}' WHERE proposal.ID = ${id};`,
+            connection.query(`UPDATE proposal set  aprp = '${aprp}', komenp = '${komenp}', aprp_date = '${aprp_date}' WHERE proposal.ID = ${id};`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -308,8 +312,10 @@ module.exports = function (app) {
             const nama_tempat = req.body.nama_tempat;
             const status = req.body.status;
             const komen = req.body.komen;
+            const submit_date = req.body.submit_date;
+            const status_date = req.body.status_date;
 
-            connection.query(`INSERT INTO peminjaman_tempat VALUES (NULL, '${user}', '${acara}', '${tanggal_mulai}', '${tanggal_selesai}', '${nama_tempat}', '${status}', '${komen}');` 
+            connection.query(`INSERT INTO peminjaman_tempat VALUES (NULL, '${user}', '${acara}', '${tanggal_mulai}', '${tanggal_selesai}', '${nama_tempat}', '${status}', '${komen}', '${submit_date}', '${status_date}');` 
             , function (error, rows, fields) {
                 if (error) {
                     console.log(error)
@@ -325,8 +331,9 @@ module.exports = function (app) {
             const id = req.body.id;    
             const status = req.body.status;
             const komen = req.body.komen;
+            const status_date = req.body.status_date;
 
-            connection.query(`UPDATE peminjaman_tempat set status = '${status}', komen = '${komen}' WHERE peminjaman_tempat.id= ${id};`, function (error, rows, fields) {
+            connection.query(`UPDATE peminjaman_tempat set status = '${status}', komen = '${komen}', status_date = '${status_date}' WHERE peminjaman_tempat.id= ${id};`, function (error, rows, fields) {
                 if (error) {
                     console.log(error)
                 } else {
@@ -357,8 +364,10 @@ module.exports = function (app) {
             const QTY = req.body.QTY;
             const status = req.body.status;
             const komen = req.body.komen;
+            const submit_date = req.body.submit_date;
+            const status_date = req.body.status_date;
 
-            connection.query(`INSERT INTO peminjaman_barang VALUES (NULL, '${user}', '${acara}', '${tanggal_mulai}', '${tanggal_selesai}', '${nama_barang}', ${QTY}, '${status}', '${komen}');` 
+            connection.query(`INSERT INTO peminjaman_barang VALUES (NULL, '${user}', '${acara}', '${tanggal_mulai}', '${tanggal_selesai}', '${nama_barang}', ${QTY}, '${status}', '${komen}', '${submit_date}', '${status_date}');` 
             , function (error, rows, fields) {
                 if (error) {
                     console.log(error)
@@ -374,8 +383,9 @@ module.exports = function (app) {
             const id = req.body.id;    
             const status = req.body.status;
             const komen = req.body.komen;
+            const status_date = req.body.status_date;
 
-            connection.query(`UPDATE peminjaman_barang set status = '${status}', komen = '${komen}' WHERE peminjaman_barang.id= ${id};`, function (error, rows, fields) {
+            connection.query(`UPDATE peminjaman_barang set status = '${status}', komen = '${komen}', status_date = '${status_date}' WHERE peminjaman_barang.id= ${id};`, function (error, rows, fields) {
                 if (error) {
                     console.log(error)
                 } else {
