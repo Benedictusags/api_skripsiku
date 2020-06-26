@@ -333,7 +333,8 @@ module.exports = function (app) {
             const komen = req.body.komen;
             const status_date = req.body.status_date;
 
-            connection.query(`UPDATE peminjaman_tempat set status = '${status}', komen = '${komen}', status_date = '${status_date}' WHERE peminjaman_tempat.id= ${id};`, function (error, rows, fields) {
+            connection.query(`UPDATE peminjaman_tempat set status = '${status}', komen = '${komen}', status_date = '${status_date}' WHERE peminjaman_tempat.id= ${id};`, 
+            function (error, rows, fields) {
                 if (error) {
                     console.log(error)
                 } else {

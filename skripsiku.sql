@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2020 at 03:54 PM
+-- Generation Time: Jun 26, 2020 at 12:40 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.1.21
 
@@ -35,13 +35,6 @@ CREATE TABLE `barang` (
   `status` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `barang`
---
-
-INSERT INTO `barang` (`ID`, `nama_barang`, `QTY`, `status`) VALUES
-(1, 'Kursi', 80, 'dipinjam');
-
 -- --------------------------------------------------------
 
 --
@@ -57,21 +50,10 @@ CREATE TABLE `peminjaman_barang` (
   `nama_barang` varchar(100) NOT NULL,
   `QTY` int(100) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `komen` varchar(100) DEFAULT NULL
+  `komen` varchar(100) DEFAULT NULL,
+  `submit_date` varchar(100) DEFAULT NULL,
+  `status_date` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `peminjaman_barang`
---
-
-INSERT INTO `peminjaman_barang` (`id`, `user`, `acara`, `tanggal_mulai`, `tanggal_selesai`, `nama_barang`, `QTY`, `status`, `komen`) VALUES
-(1, 'hmpssi', 'bambu gila on the road', '1234', '4321', 'undefined', 20, 'pending', ''),
-(2, 'BEM', 'bambu gila on the road', '1234', '4321', 'undefined', 20, 'Rejected', 'Mau dipake univ'),
-(3, 'hmpssi', 'bambu gila on the road', '1234', '4321', 'undefined', 20, 'pending', ''),
-(4, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 20, 'pending', ''),
-(5, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 20, 'pending', ''),
-(6, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 20, 'pending', ''),
-(7, 'Senat', 'Perang Sarung', '1234', '4321', 'kursi', 20, 'pending', '');
 
 -- --------------------------------------------------------
 
@@ -87,16 +69,17 @@ CREATE TABLE `peminjaman_tempat` (
   `tanggal_selesai` varchar(100) NOT NULL,
   `nama_tempat` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `komen` varchar(100) DEFAULT NULL
+  `komen` varchar(100) DEFAULT NULL,
+  `submit_date` varchar(100) DEFAULT NULL,
+  `status_date` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `peminjaman_tempat`
 --
 
-INSERT INTO `peminjaman_tempat` (`id`, `user`, `acara`, `tanggal_mulai`, `tanggal_selesai`, `nama_tempat`, `status`, `komen`) VALUES
-(1, 'Senat', 'Perang Sarung', '1234', '4321', 'undefined', 'pending', ''),
-(2, 'Senat', 'Perang Sarung', '1234', '4321', 'lapangan', 'Rejected', 'Mau dipake univ');
+INSERT INTO `peminjaman_tempat` (`id`, `user`, `acara`, `tanggal_mulai`, `tanggal_selesai`, `nama_tempat`, `status`, `komen`, `submit_date`, `status_date`) VALUES
+(1, 'hmpssi', 'Test Progdi', '2020-06-23T14:52:14.966Z', '2020-06-23T14:52:14.966Z', 'Lapangan Albertus', 'Approved', '', '2020-06-23T14:52:24.445Z', '2020-06-23T14:57:39.398Z');
 
 -- --------------------------------------------------------
 
@@ -114,21 +97,24 @@ CREATE TABLE `proposal` (
   `anggaran` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL,
   `user` varchar(100) NOT NULL,
-  `aprf` varchar(100) NOT NULL,
-  `aprp` varchar(100) NOT NULL,
+  `aprf` varchar(100) DEFAULT NULL,
+  `aprp` varchar(100) DEFAULT NULL,
   `komenf` varchar(100) DEFAULT NULL,
   `komenp` varchar(100) DEFAULT NULL,
-  `Lpj` varchar(100) DEFAULT NULL
+  `Lpj` varchar(100) DEFAULT NULL,
+  `submit_date` varchar(100) DEFAULT NULL,
+  `aprf_date` varchar(100) DEFAULT NULL,
+  `aprp_date` varchar(100) DEFAULT NULL,
+  `lpj_date` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `proposal`
 --
 
-INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`, `dikampus`, `tempat`, `anggaran`, `file`, `user`, `aprf`, `aprp`, `komenf`, `komenp`, `Lpj`) VALUES
-(1, 'Dies', '321425', '124124', 1, 'UNIQ', '5000000', 'asu', 'SOPOAKU', 'Approved', 'pending', '5000000', '', 'MANTAP.CO'),
-(2, 'Test2', '321425', '124124', 1, 'Luar', '450000', 'oke', 'SOPOAKU', 'Approved', 'undefined', '5000000', 'undefined', 'undefined'),
-(3, 'acaraan', '1234', '4321', 1, 'Unika', '300000', 'aaaaa', 'hmpssi', 'Rejected', 'Approved', 'Proposalmu Rakmutu!', '5000000', 'undefined');
+INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`, `dikampus`, `tempat`, `anggaran`, `file`, `user`, `aprf`, `aprp`, `komenf`, `komenp`, `Lpj`, `submit_date`, `aprf_date`, `aprp_date`, `lpj_date`) VALUES
+(1, 'Test Progdi', '2020-06-23T03:00:00.763Z', '2020-06-23T09:00:00.763Z', 1, 'Sporthall Unika', '10000000', 'C:fakepathBimbingan1.docx', 'hmpssi', 'Approved', '', '8500000', '', '', '2020-06-23T14:51:00.416Z', '2020-06-23T14:51:45.566Z', '', ''),
+(2, 'Test Lagi Kak', '2020-06-25T11:55:54.607Z', '2020-06-25T11:55:54.607Z', 1, 'Disana', 'Rp. 10,000,000', 'C:fakepathBimbingan1.docx', 'hmpssi', 'Rejected', '', 'asdasfasdgasgafhdfshsdgsjrgsrgsrg', '', '', '2020-06-25T11:57:04.927Z', '2020-06-25T14:31:44.391Z', '', '');
 
 -- --------------------------------------------------------
 
@@ -148,7 +134,8 @@ CREATE TABLE `tempat` (
 --
 
 INSERT INTO `tempat` (`id`, `nama_tempat`, `deskripsi`, `status`) VALUES
-(1, 'lapang', 'undefined', 'tersedia');
+(1, 'Lapangan Albertus', 'Buat futsal, apel, manggung, tawur', 'Tersedia'),
+(2, 'Sporthall', 'Buat basket, wisuda, manggung, tawur', 'Tersedia');
 
 -- --------------------------------------------------------
 
@@ -157,19 +144,32 @@ INSERT INTO `tempat` (`id`, `nama_tempat`, `deskripsi`, `status`) VALUES
 --
 
 CREATE TABLE `user` (
+  `id` int(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `pass` varchar(100) NOT NULL,
-  `user` varchar(100) NOT NULL
+  `user` varchar(100) NOT NULL,
+  `kode_user` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`email`, `pass`, `user`) VALUES
-('adean@skripsi.com', 'adean123', ''),
-('farell@gmail.com', '12345678', ''),
-('test', 'asd', '');
+INSERT INTO `user` (`id`, `email`, `pass`, `user`, `kode_user`) VALUES
+(1, 'adeanbenedictus@gmail.com', '12345678', 'admin_progdi.si', 'progdi.si'),
+(2, 'adeanbenedictus@gmail.com', '12345678', 'hmpssi', 'progdi.si'),
+(3, 'adeanbenedictus@gmail.com', '12345678', 'admin_progdi.ti', 'progdi.ti'),
+(4, 'adeanbenedictus@gmail.com', '12345678', 'hmti', 'progdi.ti'),
+(5, 'adeanbenedictus@gmail.com', '12345678', 'admin_ikom', 'fakultas.ikom'),
+(6, 'adeanbenedictus@gmail.com', '12345678', 'bem_ikom', 'fakultas.ikom'),
+(7, 'adeanbenedictus@gmail.com', '12345678', 'senat_ikom', 'fakultas.ikom'),
+(8, 'adeanbenedictus@gmail.com', '12345678', 'admin_universitas', 'universitas.unika'),
+(9, 'adeanbenedictus@gmail.com', '12345678', 'bem_universitas', 'universitas.unika'),
+(10, 'adeanbenedictus@gmail.com', '12345678', 'senat_universitas', 'universitas.unika'),
+(11, 'adeanbenedictus@gmail.com', '12345678', 'unit_peminjaman_tempat', 'upt'),
+(12, 'adeanbenedictus@gmail.com', '12345678', 'biro_administrasi_umum', 'bau'),
+(13, 'adeanbenedictus@gmail.com', '12345678', 'admin_fad', 'fakultas.fad'),
+(14, 'adeanbenedictus@gmail.com', '12345678', 'bem_fad', 'fakultas.fad');
 
 --
 -- Indexes for dumped tables
@@ -209,7 +209,7 @@ ALTER TABLE `tempat`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -219,31 +219,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `peminjaman_barang`
 --
 ALTER TABLE `peminjaman_barang`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `peminjaman_tempat`
 --
 ALTER TABLE `peminjaman_tempat`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `proposal`
 --
 ALTER TABLE `proposal`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tempat`
 --
 ALTER TABLE `tempat`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
