@@ -2,6 +2,23 @@
 
 var response = require('./res');
 var connection = require('./conn');
+var multer  = require('multer')
+var upload = multer({ dest: './public/data/uploads/' })
+var formidable = require('formidable')
+const IncomingForm = formidable.IncomingForm
+
+async function formidableDecode(req) {
+    const form = new IncomingForm();
+    form.multiples = true;
+    return new Promise((res, rej) => {
+        form.parse(req, (err, fields, files) => {
+            if (err) {
+                rej(err);
+            }
+            res({ fields, files });
+        });
+    });
+}
 
 module.exports = function (app) {
     var todoList = require('./controller');
@@ -62,29 +79,29 @@ module.exports = function (app) {
         });
 		
 
-		app.route('/addProposal')
-        .post(function (req, res) {
+		app.post('/addProposal',async function (req, res) {
 
-            const judul_acara = req.body.judul_acara;
-            const tanggal_mulai = req.body.tanggal_mulai;
-            const tanggal_selesai = req.body.tanggal_selesai;
-            const dikampus = req.body.dikampus;
-            const tempat = req.body.tempat;
-            const anggaran = req.body.anggaran;
-            const file = req.body.file;
-            const user = req.body.user;
-            const aprf = req.body.aprf;
-            const aprp = req.body.aprp;
-            const komenf = req.body.komenf;
-            const komenp = req.body.komenp;
-			const Lpj = req.body.Lpj;
-			const submit_date = req.body.submit_date;
-            const aprf_date = req.body.aprf_date;
-            const aprp_date = req.body.aprp_date;
-			const lpj_date = req.body.lpj_date;
-			
+            const { fields, files } = await formidableDecode(req);
 
-
+            const judul_acara = fields.judul_acara;
+            const tanggal_mulai = fields.tanggal_mulai;
+            const tanggal_selesai = fields.tanggal_selesai;
+            const dikampus = fields.dikampus;
+            const tempat = fields.tempat;
+            const anggaran = fields.anggaran;
+            const file = files.file.path;
+            const user = fields.user;
+            const aprf = fields.aprf;
+            const aprp = fields.aprp;
+            const komenf = fields.komenf;
+            const komenp = fields.komenp;
+			const Lpj = fields.Lpj;
+			const submit_date = fields.submit_date;
+            const aprf_date = fields.aprf_date;
+            const aprp_date = fields.aprp_date;
+            const lpj_date = fields.lpj_date;
+            
+            console.log(files, fields)
             connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}', '${submit_date}', '${aprf_date}', '${aprp_date}', '${lpj_date}');`,
                 function (error, rows, fields) {
                     if (error) {
