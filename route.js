@@ -2,9 +2,9 @@
 
 var response = require('./res');
 var connection = require('./conn');
-var multer  = require('multer')
-var upload = multer({ dest: './public/data/uploads/' })
-var formidable = require('formidable')
+var formidable = require('formidable');
+var fs = require('fs');
+
 const IncomingForm = formidable.IncomingForm
 
 async function formidableDecode(req) {
@@ -100,9 +100,11 @@ module.exports = function (app) {
             const aprf_date = fields.aprf_date;
             const aprp_date = fields.aprp_date;
             const lpj_date = fields.lpj_date;
-            
-            console.log(files, fields)
-            connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${file}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}', '${submit_date}', '${aprf_date}', '${aprp_date}', '${lpj_date}');`,
+
+            const filePath = __dirname + './public/' + files.file.name;
+            const dbPath = '/' + files.file.name;
+            fs.appendFile(filePath, files.file, () => {
+                connection.query(`INSERT INTO proposal VALUES (NULL, '${judul_acara}', '${tanggal_mulai}', '${tanggal_selesai}', ${dikampus}, '${tempat}', '${anggaran}', '${dbPath}', '${user}', '${aprf}', '${aprp}', '${komenf}', '${komenp}', '${Lpj}', '${submit_date}', '${aprf_date}', '${aprp_date}', '${lpj_date}');`,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -110,6 +112,11 @@ module.exports = function (app) {
                         response.ok(rows, res)
                     }
                 });
+            })
+
+            // const filePath = file.replace(/\\/g, "\\\\");
+            
+            
         });
 		
 
