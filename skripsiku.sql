@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2020 at 06:51 AM
+-- Generation Time: Jul 28, 2020 at 02:52 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.1.21
 
@@ -69,7 +69,7 @@ CREATE TABLE `peminjaman_barang` (
 
 INSERT INTO `peminjaman_barang` (`id`, `user`, `acara`, `tanggal_mulai`, `tanggal_selesai`, `nama_barang`, `QTY`, `status`, `komen`, `submit_date`, `status_date`) VALUES
 (1, 'hmpssi', '', '2020-07-01T14:04:46.070Z', '2020-07-01T14:04:46.070Z', '', 10, 'Approved', '', '2020-07-01T14:04:56.436Z', '2020-07-01T14:13:16.313Z'),
-(2, 'hmpssi', '', '2020-07-01T15:14:04.729Z', '2020-07-02T15:14:04.000Z', '', 10, 'Pending', '', '2020-07-01T15:14:19.666Z', '2020-07-01T15:14:19.667Z'),
+(2, 'hmpssi', '', '2020-07-01T15:14:04.729Z', '2020-07-02T15:14:04.000Z', '', 10, 'Approved', '', '2020-07-01T15:14:19.666Z', '2020-07-26T13:22:41.748Z'),
 (3, 'hmpssi', 'Anjay', '2020-07-01T15:24:26.601Z', '2020-07-02T15:24:26.000Z', 'Kursi', 10, 'Approved', '', '2020-07-01T15:24:42.840Z', '2020-07-01T15:26:26.788Z');
 
 -- --------------------------------------------------------
@@ -131,7 +131,7 @@ CREATE TABLE `proposal` (
 --
 
 INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`, `dikampus`, `tempat`, `anggaran`, `file`, `user`, `aprf`, `aprp`, `komenf`, `komenp`, `Lpj`, `submit_date`, `aprf_date`, `aprp_date`, `lpj_date`) VALUES
-(1, 'Test Progdi', '2020-06-23T03:00:00.763Z', '2020-06-23T09:00:00.763Z', 1, 'Sporthall Unika', '10000000', 'C:fakepathBimbingan1.docx', 'hmpssi', 'Approved', '', '8500000', '', '', '2020-06-23T14:51:00.416Z', '2020-06-23T14:51:45.566Z', '', ''),
+(1, 'Test Progdi', '2020-06-23T03:00:00.763Z', '2020-06-23T09:00:00.763Z', 1, 'Sporthall Unika', '10000000', 'C:fakepathBimbingan1.docx', 'hmpssi', 'Approved', '', '8500000', '', 'C:fakepathHM17.pdf', '2020-06-23T14:51:00.416Z', '2020-06-23T14:51:45.566Z', '', '2020-07-17T05:00:17.614Z'),
 (2, 'Test Lagi Kak', '2020-06-25T11:55:54.607Z', '2020-06-25T11:55:54.607Z', 1, 'Disana', 'Rp. 10,000,000', 'C:fakepathBimbingan1.docx', 'hmpssi', 'Rejected', '', 'asdasfasdgasgafhdfshsdgsjrgsrgsrg', '', '', '2020-06-25T11:57:04.927Z', '2020-06-25T14:31:44.391Z', '', ''),
 (3, 'Test Prenstasi', '2020-06-29T03:00:00.460Z', '2020-06-29T07:00:00.460Z', 1, 'DIkampis, Lapangan', 'Rp. 10,000,000', 'C:fakepathBimbingan3.docx', 'hmpssi', 'Rejected', '', 'Proposal Kurang', '', '', '2020-06-29T01:05:26.286Z', '2020-06-29T01:10:13.866Z', '', ''),
 (4, 'Test Presentasi', '2020-06-29T01:20:37.277Z', '2020-06-29T01:20:37.277Z', 1, 'DIkampus, Sporthall', 'Rp. 1,000,000', 'C:fakepathBimbingan1.docx', 'bem_ikom', 'Approved', 'Approved', '', 'Rp. 10,000,000', '', '2020-06-29T01:21:28.492Z', '2020-06-29T01:26:30.203Z', '2020-06-29T01:29:24.940Z', ''),
@@ -139,13 +139,24 @@ INSERT INTO `proposal` (`ID`, `judul_acara`, `tanggal_mulai`, `tanggal_selesai`,
 (6, 'Test 2', '2020-09-10T03:30:00.000Z', '2020-09-11T03:30:00.000Z', 1, 'Dikampus, Lapangan albertus', 'Rp. 10,000,000', 'C:fakepathAlur utama aplikasi photo.pdf', 'hmpssi', 'Rejected', '', 'Kurang', '', '', '2020-07-01T03:33:38.291Z', '2020-07-01T03:41:36.369Z', '', ''),
 (7, 'Tes BEm', '2020-07-01T03:46:56.916Z', '2020-07-01T03:46:56.916Z', 1, 'Kampus, Auditorium', 'Rp. 1,000,000', 'C:fakepathTI073200.pdf', 'bem_ikom', 'Approved', 'Pending', '', '', '', '2020-07-01T03:47:24.288Z', '2020-07-01T03:48:21.311Z', '2020-07-01T03:47:24.288Z', ''),
 (8, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2020-07-01T03:52:49.345Z', '2020-07-01T03:52:49.346Z', 1, 'asdasd', 'Rp. 121,241,251', 'C:fakepath71395214.pdf', 'bem_ikom', 'Pending', 'Pending', '', '', '', '2020-07-01T03:53:31.075Z', '2020-07-01T03:53:31.075Z', '2020-07-01T03:53:31.075Z', ''),
-(9, 'Upload File COba', '2020-07-01T12:37:10.048Z', '2020-07-01T12:37:10.048Z', 1, 'adasd', 'Rp. 1,423,525', 'C:fakepathKOMPONEN.PNG', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T12:51:45.600Z', '2020-07-01T12:51:45.600Z', '', ''),
+(9, 'Upload File COba', '2020-07-01T12:37:10.048Z', '2020-07-01T12:37:10.048Z', 1, 'adasd', 'Rp. 1,423,525', 'C:fakepathKOMPONEN.PNG', 'hmpssi', 'Rejected', '', 'Ini banyak kurangnya seperti nah itu maksudku nah init sduf sakldj sadlf aslkjfh askldjfh sa', '', '', '2020-07-01T12:51:45.600Z', '2020-07-25T14:17:07.879Z', '', ''),
 (10, 'asd', '2020-07-01T12:52:55.573Z', '2020-07-01T12:52:55.573Z', 1, 'asd', 'Rp. 1,234', 'C:fakepath\000293421_1-f19e5a68f2298c21e6546d86e7c100ec.png', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T12:53:24.322Z', '2020-07-01T12:53:24.322Z', '', ''),
 (11, 'z', '2020-07-01T12:55:04.289Z', '2020-07-01T12:55:04.289Z', 1, 'z', 'Rp. 123', '[object Object]', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T12:56:24.724Z', '2020-07-01T12:56:24.724Z', '', ''),
 (12, 'asd', '2020-07-01T12:55:04.289Z', '2020-07-01T12:55:04.289Z', 1, 'asd', 'Rp. 123', '[object Object]', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T12:57:22.529Z', '2020-07-01T12:57:22.529Z', '', ''),
 (13, 'z', '2020-07-01T12:55:04.289Z', '2020-07-01T12:55:04.289Z', 1, 'z', 'Rp. 1', '[object Object]', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T12:58:27.591Z', '2020-07-01T12:58:27.591Z', '', ''),
 (14, 'z', '2020-07-01T12:55:04.289Z', '2020-07-01T12:55:04.289Z', 1, 'z', 'Rp. 123', '[object Object]', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T13:04:33.739Z', '2020-07-01T13:04:33.739Z', '', ''),
-(15, 'z', '2020-07-01T12:55:04.289Z', '2020-07-01T12:55:04.289Z', 1, 'z', 'Rp. 1', '[object Object]', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T13:06:28.080Z', '2020-07-01T13:06:28.080Z', '', '');
+(15, 'z', '2020-07-01T12:55:04.289Z', '2020-07-01T12:55:04.289Z', 1, 'z', 'Rp. 1', '[object Object]', 'hmpssi', 'Pending', '', '', '', '', '2020-07-01T13:06:28.080Z', '2020-07-01T13:06:28.080Z', '', ''),
+(16, 'Oke', 'Wed Jul 08 2020 11:54:01 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 11:54:01 GMT+0700 (Indochina Time)', 1, 'Disana', 'Rp. 1,000,000', 'C:UsersAdeanAppDataLocalTempupload_9bb8f847455cb9efedd6837c8e5b946f', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 11:55:01 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 11:55:01 GMT+0700 (Indochina Time)', '', ''),
+(17, 'UPLOAD FILE', 'Wed Jul 08 2020 21:42:26 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:42:26 GMT+0700 (Indochina Time)', 1, 'OKE', 'Rp. 100,000', 'C:\\Users\\Adean\\AppData\\Local\\Temp\\upload_50e4284d983674ed31d0fe9340d3c12f', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 21:43:10 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:43:10 GMT+0700 (Indochina Time)', '', ''),
+(18, 'UPLOAD LAGI', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 1, 'KOE', 'Rp. 1,209,910', 'C:\\Users\\Adean\\AppData\\Local\\Temp\\upload_616829a652a915a76a16dd55c804fe21', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 21:49:32 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:49:32 GMT+0700 (Indochina Time)', '', ''),
+(19, 'MANTAP OKE', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 1, 'LaGI', 'Rp. 1,002,913', 'C:\\Users\\Adean\\AppData\\Local\\Temp\\upload_d4df5db4ebf8e3e6039041771a4fcc6f', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 21:53:06 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:53:06 GMT+0700 (Indochina Time)', '', ''),
+(20, 'TEST FILE LAGI', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 1, 'OKELA', 'Rp. 1,000', 'C:\\Users\\Adean\\AppData\\Local\\Temp\\upload_60dc80021d2188328b1fdff67c37fdd6', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 21:54:56 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:54:56 GMT+0700 (Indochina Time)', '', ''),
+(21, 'ABCD', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:43:16 GMT+0700 (Indochina Time)', 1, 'Oke', 'Rp. 10,000', 'C:UsersAdeanDesktopSkripsiku/public/542-1582-1-PB.pdf', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 21:58:38 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 21:58:38 GMT+0700 (Indochina Time)', '', ''),
+(22, 'TERAKHIR', 'Wed Jul 08 2020 22:04:41 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:04:41 GMT+0700 (Indochina Time)', 1, 'Oke', 'Rp. 1,092,109', '/public/Alur utama aplikasi photo.pdf', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 22:06:35 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:06:35 GMT+0700 (Indochina Time)', '', ''),
+(23, 'TERAKHIR LAGI', 'Wed Jul 08 2020 22:07:16 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:07:16 GMT+0700 (Indochina Time)', 1, 'OKe', 'Rp. 10,000', '/public/542-1582-1-PB.pdf', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 22:07:51 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:07:51 GMT+0700 (Indochina Time)', '', ''),
+(24, 'MENEH', 'Wed Jul 08 2020 22:10:37 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:10:37 GMT+0700 (Indochina Time)', 1, 'ok', 'Rp. 10,009', '/261-Article Text-260-1-10-20170322.pdf', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 22:10:58 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:10:58 GMT+0700 (Indochina Time)', '', ''),
+(25, 'Bukan spasi', 'Wed Jul 08 2020 22:11:49 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:11:49 GMT+0700 (Indochina Time)', 1, 'ok', 'Rp. 1,000', '/542-1582-1-PB.pdf', 'hmpssi', 'Pending', '', '', '', '', 'Wed Jul 08 2020 22:12:45 GMT+0700 (Indochina Time)', 'Wed Jul 08 2020 22:12:45 GMT+0700 (Indochina Time)', '', ''),
+(26, 'Test File Fakultas', 'Sat Jul 25 2020 13:15:28 GMT+0700 (Indochina Time)', 'Sat Jul 25 2020 16:15:00 GMT+0700 (Indochina Time)', 1, 'Kampus', 'Rp. 1,000,000', '/HM17.pdf', 'bem_ikom', 'Pending', 'Pending', '', '', '', 'Sat Jul 25 2020 13:16:05 GMT+0700 (Indochina Time)', 'Sat Jul 25 2020 13:16:05 GMT+0700 (Indochina Time)', 'Sat Jul 25 2020 13:16:05 GMT+0700 (Indochina Time)', '');
 
 -- --------------------------------------------------------
 
@@ -181,14 +192,14 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `pass` varchar(100) NOT NULL,
   `user` varchar(100) NOT NULL,
-  `kode_user` varchar(100) NOT NULL
+  `nama_ketua` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `pass`, `user`, `kode_user`) VALUES
+INSERT INTO `user` (`id`, `email`, `pass`, `user`, `nama_ketua`) VALUES
 (1, 'adeanbenedictus@gmail.com', '12345678', 'admin_progdi.si', 'progdi.si'),
 (2, 'adeanbenedictus@gmail.com', '12345678', 'hmpssi', 'progdi.si'),
 (3, 'adeanbenedictus@gmail.com', '12345678', 'admin_progdi.ti', 'progdi.ti'),
@@ -270,7 +281,7 @@ ALTER TABLE `peminjaman_tempat`
 -- AUTO_INCREMENT for table `proposal`
 --
 ALTER TABLE `proposal`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tempat`

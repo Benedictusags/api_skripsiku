@@ -113,24 +113,21 @@ module.exports = function (app) {
                     }
                 });
             })
-
-            // const filePath = file.replace(/\\/g, "\\\\");
-            
-            
         });
 		
 
+        app.post('/updateLPJ',async function (req, res) {
 
-    app.route('/updateLPJ')
-        .post(function (req, res) {
+            const { fields, files } = await formidableDecode(req);
 
-           
-            const id = req.body.id;
-            const Lpj = req.body.Lpj;
-            const lpj_date = req.body.lpj_date;
+			const Lpj = files.Lpj.path;
+            const lpj_date = fields.lpj_date;
 
-
-            connection.query(`UPDATE proposal set Lpj = '${Lpj}', lpj_date = '${lpj_date}' WHERE proposal.ID = ${id};`,
+            const filePath = __dirname + './public/' + files.Lpj.name;
+            const dbPath = '/' + files.Lpj.name;
+            fs.appendFile(filePath, files.Lpj, () => {
+                connection.query(`UPDATE proposal set Lpj = '${dbPath}', lpj_date = '${lpj_date}' WHERE proposal.ID = ${id};`
+                ,
                 function (error, rows, fields) {
                     if (error) {
                         console.log(error)
@@ -138,6 +135,7 @@ module.exports = function (app) {
                         response.ok(rows, res)
                     }
                 });
+            })
         });
 		
 		app.route('/deleteProposal')
